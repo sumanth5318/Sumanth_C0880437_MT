@@ -2,6 +2,7 @@ package com.example.sumanth_c0880437_mt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,7 +29,15 @@ public class MainActivity extends AppCompatActivity {
     CheckBox gps;
     CheckBox childseat;
     CheckBox milage;
+    RadioButton young;
+    RadioButton middle;
+    RadioButton old;
+    String model;
+    int options_price= 0;
     Double[] pricelist = {0.00,300.00,400.00,399.00,249.99,299.99,199.99,149.99};
+    double temp = 0.00;
+    int noofdays ;
+    int rent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +46,15 @@ public class MainActivity extends AppCompatActivity {
         daily_rent = findViewById(R.id.et_dailytrent);
         no_of_days = findViewById(R.id.txtvw_days);
         days = findViewById(R.id.seekbardays);
-        details = findViewById(R.id.btn_view_details);
         total_amount = findViewById(R.id.txtvw_totalamount);
         ll_chkbox = findViewById(R.id.ll_options_chkbox);
         gps = findViewById(R.id.chkbox_gps);
         childseat = findViewById(R.id.chkbox_childseat);
         milage = findViewById(R.id.chkbox_mileage);
+        young = findViewById(R.id.radio_young);
+        middle = findViewById(R.id.radio_middle);
+        old = findViewById(R.id.radio_old);
+        details = findViewById(R.id.btn_view_details);
         carmenulist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -66,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                         daily_rent.setText(""+pricelist[i]);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -76,12 +88,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-                double temp;
                 no_of_days.setText(""+progress);
-                temp = 1.13*progress*Double.parseDouble(daily_rent.getText().toString());
-                total_amount.setText(""+String.format("%.2f", temp));
+                noofdays = progress;
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(MainActivity.this, "Started days selection", Toast.LENGTH_SHORT).show();
@@ -91,25 +100,62 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Selection Stopped", Toast.LENGTH_SHORT).show();
             }
         });
-        ll_chkbox.setOnClickListener(view ->{
-            if(gps.isChecked()){
-                Toast.makeText(this,"5 $",Toast.LENGTH_SHORT).show();
-            }else if(childseat.isChecked()){
-                Toast.makeText(this,"7 $",Toast.LENGTH_SHORT).show();
-            }else if(milage.isChecked()){
-                Toast.makeText(this,"10 $",Toast.LENGTH_SHORT).show();
-            }
+        onclickradiobtn();
+        checked();
+        details.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+            intent.putExtra("Total_amount",temp);
+            intent.putExtra("car_model",model);
+            intent.putExtra("days",noofdays);
+//            intent.putExtra("total amount",temp);
+            startActivity(intent);
         });
     }
     public void onclickradiobtn(){
-        switch (R.id.radiobtns_age){
-            case 0:
-                Toast.makeText(this, "age is less than 20", Toast.LENGTH_SHORT).show();
-            case 1:
-                Toast.makeText(this, "age is less than 60", Toast.LENGTH_SHORT).show();
-            case 2:
-                Toast.makeText(this, "age is less than 100", Toast.LENGTH_SHORT).show();
-        }
-
+        young.setOnClickListener(view -> {
+            if(young.isChecked()){
+                rent = 5;
+                temp = noofdays*(Double.parseDouble(daily_rent.getText().toString())+rent);
+            }
+        });
+        middle.setOnClickListener(view -> {
+            if(middle.isChecked()){
+                rent = 7;
+                temp = noofdays*(Double.parseDouble(daily_rent.getText().toString()));
+            }
+        });
+        old.setOnClickListener(view -> {
+            if(old.isChecked()){
+                rent = 10;
+                temp = noofdays*(Double.parseDouble(daily_rent.getText().toString())-rent);
+            }
+        });
+    }
+    public void checked(){
+        gps.setOnClickListener(view ->  {
+            if(gps.isChecked()){
+                Toast.makeText(this,"5$",Toast.LENGTH_SHORT).show();
+                options_price += 5;
+                temp += options_price;
+                temp = 1.13*temp;
+                total_amount.setText(""+String.format("%.2f", temp));
+            }
+        });
+        childseat.setOnClickListener(view ->  {
+            if(childseat.isChecked()){
+                Toast.makeText(this,"7$",Toast.LENGTH_SHORT).show();
+                options_price += 7;
+                temp = 1.13*temp;
+                total_amount.setText(""+String.format("%.2f", temp));
+            }
+        });
+        milage.setOnClickListener(view ->  {
+            if(milage.isChecked()){
+                Toast.makeText(this,"9$",Toast.LENGTH_SHORT).show();
+                options_price += 10;
+                temp = 1.13*temp;
+                total_amount.setText(""+String.format("%.2f", temp));
+            }
+        });
     }
 }

@@ -98,7 +98,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:checked="false"
-            android:onClick="onclickradiobtn"
             android:text="Less than 20"
             android:textSize="20sp" />
 
@@ -108,7 +107,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:checked="false"
-            android:onClick="onclickradiobtn"
             android:text="Between 21 and 60"
             android:textSize="20sp" />
 
@@ -118,7 +116,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:checked="false"
-            android:onClick="onclickradiobtn"
             android:text="Above 60"
             android:textSize="20sp" />
         </RadioGroup>
@@ -144,7 +141,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GPS"
-            android:layout_marginLeft="40dp"/>
+            android:layout_marginLeft="40dp" />
         <CheckBox
             android:id="@+id/chkbox_childseat"
             android:layout_width="wrap_content"
