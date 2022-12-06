@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Sumanth_C0880437_MT</string>
+    <string-array name="carlist">
+        <item>Please Choose a car</item>
+        <item>BMW</item>
+        <item>Audi</item>
+        <item>Ferrari</item>
+        <item>Hyundai</item>
+        <item>Volks Wagen</item>
+        <item>Mahindra Thar</item>
+        <item>Peugoet</item>
+    </string-array>
 </resources>
