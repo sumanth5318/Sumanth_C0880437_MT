@@ -30,6 +30,10 @@ public class MainActivity2 extends AppCompatActivity {
         days.setText(""+daysno);
         car_model.setText(s);
         age.setText(s1);
-        options.setText(s2+"  added to the car");
+        if(s2.isEmpty()){
+            options.setText("No extra options selected");
+        }else {
+            options.setText(s2 + "  added to the car");
+        }
     }
 }

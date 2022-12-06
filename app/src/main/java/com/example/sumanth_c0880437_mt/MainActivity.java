@@ -144,7 +144,11 @@ public class MainActivity extends AppCompatActivity {
                 temp += options_price;
                 temp = 1.13*temp;
                 total_amount.setText(String.format("%.2f", temp));
-                options += " Gps";
+                if(options.isEmpty()) {
+                    options += "Gps";
+                }else {
+                    options += ",Gps";
+                }
             }
         });
         childseat.setOnClickListener(view ->  {
@@ -153,7 +157,11 @@ public class MainActivity extends AppCompatActivity {
                 options_price += 7;
                 temp = 1.13*temp;
                 total_amount.setText(String.format("%.2f", temp));
-                options += " Child seat";
+                if(options.isEmpty()) {
+                    options += " Child seat";
+                }else {
+                    options += ",Child seat";
+                }
             }
         });
         milage.setOnClickListener(view ->  {
@@ -162,7 +170,11 @@ public class MainActivity extends AppCompatActivity {
                 options_price += 10;
                 temp = 1.13*temp;
                 total_amount.setText(String.format("%.2f", temp));
-                options += " Unlimited Mileage";
+                if(options.isEmpty()) {
+                    options += "Unlimited Mileage";
+                }else {
+                    options += ",Unlimited Mileage";
+                }
             }
         });
     }
