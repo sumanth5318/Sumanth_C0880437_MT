@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
     RadioButton young;
     RadioButton middle;
     RadioButton old;
-    String model;
     int options_price= 0;
     Double[] pricelist = {0.00,300.00,400.00,399.00,249.99,299.99,199.99,149.99};
     double temp = 0.00;
     int noofdays ;
     int rent;
+    String age;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,8 +105,9 @@ public class MainActivity extends AppCompatActivity {
         details.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MainActivity2.class);
             intent.putExtra("Total_amount",temp);
-            intent.putExtra("car_model",model);
+            intent.putExtra("car_model",carmenulist.getSelectedItem().toString());
             intent.putExtra("days",noofdays);
+            intent.putExtra("age",age);
 //            intent.putExtra("total amount",temp);
             startActivity(intent);
         });
@@ -116,18 +117,21 @@ public class MainActivity extends AppCompatActivity {
             if(young.isChecked()){
                 rent = 5;
                 temp = noofdays*(Double.parseDouble(daily_rent.getText().toString())+rent);
+                age = "Below 20 years";
             }
         });
         middle.setOnClickListener(view -> {
             if(middle.isChecked()){
                 rent = 7;
                 temp = noofdays*(Double.parseDouble(daily_rent.getText().toString()));
+                age = "Between 21 to 60";
             }
         });
         old.setOnClickListener(view -> {
             if(old.isChecked()){
                 rent = 10;
                 temp = noofdays*(Double.parseDouble(daily_rent.getText().toString())-rent);
+                age = "Above 60";
             }
         });
     }

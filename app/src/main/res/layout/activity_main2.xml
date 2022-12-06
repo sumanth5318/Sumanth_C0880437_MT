@@ -60,6 +60,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Age:"
+                android:textStyle="bold"
+                android:paddingLeft="30dp"
+                android:layout_weight="2"/>
+            <TextView
+                android:id="@+id/txtvw_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textStyle="bold"
+                android:hint="Age" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Total amount:"
                 android:textStyle="bold"
                 android:paddingLeft="30dp"
@@ -73,6 +94,7 @@
                 android:text="total amount" />
         </LinearLayout>
     </LinearLayout>
+
 
 
 
