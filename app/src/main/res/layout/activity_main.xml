@@ -33,6 +33,7 @@
         android:text="Daily Rent"
         android:ems="10"
         android:enabled="false"
+        android:textStyle="bold"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +57,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="#Days"/>
+            android:text="#Days"
+            android:textStyle="bold"/>
     </LinearLayout>
     <SeekBar
         android:id="@+id/seekbardays"
@@ -86,12 +88,17 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="5dp">
+        <RadioGroup
+            android:id="@+id/radiobtns_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <RadioButton
             android:id="@+id/radio_young"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:checked="false"
+            android:onClick="onclickradiobtn"
             android:text="Less than 20"
             android:textSize="20sp" />
 
@@ -101,6 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:checked="false"
+            android:onClick="onclickradiobtn"
             android:text="Between 21 and 60"
             android:textSize="20sp" />
 
@@ -110,8 +118,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:checked="false"
+            android:onClick="onclickradiobtn"
             android:text="Above 60"
             android:textSize="20sp" />
+        </RadioGroup>
     </LinearLayout>
     <TextView
         android:id="@+id/txtvw_options"
@@ -136,17 +146,17 @@
             android:text="GPS"
             android:layout_marginLeft="40dp"/>
         <CheckBox
-        android:id="@+id/chkbox_childseat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Child Seat"
-        android:layout_marginLeft="20dp"/>
+            android:id="@+id/chkbox_childseat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Child Seat" />
         <CheckBox
-        android:id="@+id/chkbox_mileage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Unlimited mileage"
-        android:layout_marginLeft="20dp"/>
+            android:id="@+id/chkbox_mileage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Unlimited mileage" />
     </LinearLayout>
     <TextView
         android:id="@+id/txtvw_totalamount"
@@ -159,6 +169,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
     <Button
+        android:id="@+id/btn_view_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View Details"
