@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     int noofdays ;
     int rent;
     String age;
+    String options = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("car_model",carmenulist.getSelectedItem().toString());
             intent.putExtra("days",noofdays);
             intent.putExtra("age",age);
-//            intent.putExtra("total amount",temp);
+            intent.putExtra("options",options);
             startActivity(intent);
         });
     }
@@ -142,7 +143,8 @@ public class MainActivity extends AppCompatActivity {
                 options_price += 5;
                 temp += options_price;
                 temp = 1.13*temp;
-                total_amount.setText(""+String.format("%.2f", temp));
+                total_amount.setText(String.format("%.2f", temp));
+                options += " Gps";
             }
         });
         childseat.setOnClickListener(view ->  {
@@ -150,7 +152,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,"7$",Toast.LENGTH_SHORT).show();
                 options_price += 7;
                 temp = 1.13*temp;
-                total_amount.setText(""+String.format("%.2f", temp));
+                total_amount.setText(String.format("%.2f", temp));
+                options += " Child seat";
             }
         });
         milage.setOnClickListener(view ->  {
@@ -158,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,"9$",Toast.LENGTH_SHORT).show();
                 options_price += 10;
                 temp = 1.13*temp;
-                total_amount.setText(""+String.format("%.2f", temp));
+                total_amount.setText(String.format("%.2f", temp));
+                options += " Unlimited Mileage";
             }
         });
     }

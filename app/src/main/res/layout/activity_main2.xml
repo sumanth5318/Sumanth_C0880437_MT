@@ -93,6 +93,14 @@
                 android:textStyle="bold"
                 android:text="total amount" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/options_txtvw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Options"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:paddingLeft="20dp"/>
     </LinearLayout>
 
 
